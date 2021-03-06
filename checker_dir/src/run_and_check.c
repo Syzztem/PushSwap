@@ -6,7 +6,7 @@
 /*   By: lothieve <lothieve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 13:56:31 by lothieve          #+#    #+#             */
-/*   Updated: 2021/03/05 15:35:44 by lothieve         ###   ########.fr       */
+/*   Updated: 2021/03/06 15:06:50 by lothieve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int
 {
 	char	nul;
 
-	if (!read(fd, buf, 3))
+	if (read(fd, buf, 3) < 3 || *buf == '\04')
 		return (0);
 	if (buf[2] == '\n')
 		buf[2] = 0;
@@ -48,7 +48,8 @@ static t_instruct
 	while (i < INS_COUNT)
 	{
 		if (!ft_strcmp(instruct, ins_names()[i]))
-			return (instructions()[i]);
+			return (instructions().instructs[i]);
+		++i;
 	}
 	err_exit();
 	return (NULL);
@@ -65,7 +66,12 @@ void
 	instruct[3] = 0;
 	while (adaptive_read(fd, instruct))
 	{
-		run_instruct(instruct);
+		run_instruct(instruct)(&a, &b);
+		print_state(instruct, a, b);
 	}
+	if (!b && is_sorted(a))
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 }
 

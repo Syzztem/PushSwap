@@ -6,7 +6,7 @@
 /*   By: lothieve <lothieve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 10:53:18 by lothieve          #+#    #+#             */
-/*   Updated: 2021/03/05 16:02:41 by lothieve         ###   ########.fr       */
+/*   Updated: 2021/03/06 14:42:15 by lothieve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <limits.h>
 # include <unistd.h>
 # include <stdio.h>
+# define SHIT_LOAD_OF_DASHES "-------------------------------------------------"
 
 typedef struct	s_stack
 {
@@ -48,5 +49,10 @@ void			rr(t_stack **a, t_stack **b);
 void			rra(t_stack **a, t_stack **b);
 void			rrb(t_stack **a, t_stack **b);
 void			rrr(t_stack **a, t_stack **b);
+
+int				is_sorted(const t_stack *stack);
+unsigned int	stack_size(const t_stack *stack);
+t_stack			*before_last(t_stack *stack);
+void			print_state(char *instruct, t_stack *a, t_stack *b);
 
 #endif

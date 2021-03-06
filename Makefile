@@ -6,11 +6,11 @@
 #    By: lothieve <lothieve@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/23 14:45:40 by lothieve          #+#    #+#              #
-#    Updated: 2021/03/05 16:03:19 by lothieve         ###   ########.fr        #
+#    Updated: 2021/03/06 14:46:42 by lothieve         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CHECKER_SRC_R = checker.c run_and_check.c furbiddun_cunstunt.c swap.c push.c rotate.c rrotate.c
+CHECKER_SRC_R = checker.c furbiddun_cunstunt.c push.c rotate.c rrotate.c run_and_check.c stack_utils.c swap.c
 CHECKER_SRC = $(addprefix ${CHECKER_SRC_PATH}, ${CHECKER_SRC_R})
 CHECKER_SRC_PATH = checker_dir/src/
 CHECKER_INC_PATH = checker_dir/includes
@@ -30,7 +30,7 @@ NAME = ${PUSW_NAME} ${CHECKER_NAME}
 
 
 CC = clang
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -f
 
 all:			${NAME}
