@@ -6,11 +6,11 @@
 /*   By: lothieve <lothieve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:44:20 by lothieve          #+#    #+#             */
-/*   Updated: 2021/03/06 12:04:54 by lothieve         ###   ########.fr       */
+/*   Updated: 2021/12/02 14:32:03 by lothieve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 static void
 	rotate(t_stack **first, t_stack *last)
@@ -24,6 +24,7 @@ static void
 
 void	ra(t_stack **a, t_stack **b)
 {
+	ft_puts("ra");
 	(void)b;
 	if (stack_size(*a) < 2)
 		return ;
@@ -32,6 +33,7 @@ void	ra(t_stack **a, t_stack **b)
 
 void	rb(t_stack **a, t_stack **b)
 {
+	ft_puts("rb");
 	(void)a;
 	if (stack_size(*b) < 2)
 		return ;
@@ -40,6 +42,7 @@ void	rb(t_stack **a, t_stack **b)
 
 void	rr(t_stack **a, t_stack **b)
 {
+	ft_puts("rr");
 	if (stack_size(*a) >= 2)
 		rotate(a, *a);
 	if (stack_size(*b) >= 2)

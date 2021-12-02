@@ -6,51 +6,36 @@
 #    By: lothieve <lothieve@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/23 14:45:40 by lothieve          #+#    #+#              #
-#    Updated: 2021/03/06 14:46:42 by lothieve         ###   ########.fr        #
+#    Updated: 2021/12/02 16:21:40 by lothieve         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CHECKER_SRC_R = checker.c furbiddun_cunstunt.c push.c rotate.c rrotate.c run_and_check.c stack_utils.c swap.c
-CHECKER_SRC = $(addprefix ${CHECKER_SRC_PATH}, ${CHECKER_SRC_R})
-CHECKER_SRC_PATH = checker_dir/src/
-CHECKER_INC_PATH = checker_dir/includes
-CHECKER_NAME = checker
-CHECKER_OBJS = ${CHECKER_SRC:.c=.o}
-
-PUSW_SRC_R = push_swap.c
-PUSW_SRC = $(addprefix ${PUSW_SRC_PATH}, ${PUSW_SRC_R})
-PUSW_SRC_PATH =	push_swap_dir/src/
-PUSW_INC_PATH = push_swap_dir/includes
-PUSW_NAME = push_swap
-PUSW_OBJS = ${PUSW_SRC:.c=.o}
-
-OBJS = ${CHECKER_OBJS} ${PUSW_OBJS}
-SRC = ${CHECKER_SRC} ${PUSW_SRC}
-NAME = ${PUSW_NAME} ${CHECKER_NAME}
-
+SRC_R =		push.c push_swap.c rotate.c rrotate.c solve.c solve_small.c stack_utils.c swap.c utils.c
+SRC =		$(addprefix ${SRC_PATH}, ${SRC_R})
+SRC_PATH =	src/
+INC_PATH =	includes/
+NAME =		push_swap
+OBJS =		${SRC:.c=.o}
 
 CC = clang
 CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -f
 
-all:			${NAME}
+all:		${NAME}
 
-${PUSW_NAME}:	${PUSW_OBJS}
-				${CC} ${CFLAGS} -o ${PUSW_NAME} ${PUSW_OBJS}
-
-${CHECKER_NAME}:		${CHECKER_OBJS}
-				${CC} ${CFLAGS} -o ${CHECKER_NAME} ${CHECKER_OBJS}
+${NAME}:	${OBJS}
+				${CC} ${CFLAGS} -o ${NAME} ${OBJS}
 
 clean:
 				${RM} ${OBJS}
 
-fclean:			clean
+fclean:		clean
 				${RM} ${NAME}
 
-re:				fclean all
+re:			fclean all
 
 
 .c.o:
-				${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I${CHECKER_INC_PATH} -I${PUSW_INC_PATH} -I${LIBFT_PATH}
+				${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I${INC_PATH}
 
-.PHONY:			all asm corewar clean fclean re
+.PHONY:		all clean fclean re

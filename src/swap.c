@@ -6,16 +6,16 @@
 /*   By: lothieve <lothieve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:36:44 by lothieve          #+#    #+#             */
-/*   Updated: 2021/03/06 11:18:01 by lothieve         ###   ########.fr       */
+/*   Updated: 2021/12/02 14:31:38 by lothieve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 static void
 	swap(t_stack *stack)
 {
-	int sw;
+	int	sw;
 
 	if (stack_size(stack) < 2)
 		return ;
@@ -28,18 +28,21 @@ static void
 
 void	sa(t_stack **a, t_stack **b)
 {
+	ft_puts("sa");
 	(void)b;
 	swap(*a);
 }
 
 void	sb(t_stack **a, t_stack **b)
 {
+	ft_puts("sb");
 	(void)a;
 	swap(*b);
 }
 
 void	ss(t_stack **a, t_stack **b)
 {
+	ft_puts("ss");
 	swap(*a);
 	swap(*b);
 }

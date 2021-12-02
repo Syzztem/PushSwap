@@ -6,11 +6,11 @@
 /*   By: lothieve <lothieve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 11:01:24 by lothieve          #+#    #+#             */
-/*   Updated: 2021/03/06 14:47:48 by lothieve         ###   ########.fr       */
+/*   Updated: 2021/12/02 17:03:46 by lothieve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 unsigned int
 	stack_size(const t_stack *stack)
@@ -23,6 +23,8 @@ unsigned int
 int
 	is_sorted(const t_stack *stack)
 {
+	if (!stack)
+		return (1);
 	if (stack->next)
 	{
 		if (stack->val > stack->next->val)
@@ -32,7 +34,7 @@ int
 	return (1);
 }
 
-static void
+void
 	print_both_stacks(t_stack *a, t_stack *b)
 {
 	if (a || b)
@@ -54,19 +56,18 @@ static void
 		printf("|%10s||%-10d|\n", "", b->val);
 }
 
-void
-	print_state(char *instruct, t_stack *a, t_stack *b)
+t_stack
+	*last(t_stack *stack)
 {
-	write(1, SHIT_LOAD_OF_DASHES, 49);
-	write(1, "\n", 1);
-	printf("Executing %s\n", instruct);
-	print_both_stacks(a, b);
+	if (stack && stack->next)
+		return (before_last(stack->next));
+	return (stack);
 }
 
 t_stack
 	*before_last(t_stack *stack)
 {
-	if (stack->next->next)
+	if (stack && stack->next && stack->next->next)
 		return (before_last(stack->next));
 	return (stack);
 }

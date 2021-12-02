@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lothieve <lothieve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 10:53:18 by lothieve          #+#    #+#             */
-/*   Updated: 2021/03/06 14:42:15 by lothieve         ###   ########.fr       */
+/*   Updated: 2021/12/02 17:06:22 by lothieve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,14 @@ void			rrr(t_stack **a, t_stack **b);
 
 int				is_sorted(const t_stack *stack);
 unsigned int	stack_size(const t_stack *stack);
+t_stack			*last(t_stack *stack);
 t_stack			*before_last(t_stack *stack);
-void			print_state(char *instruct, t_stack *a, t_stack *b);
+void			print_both_stacks(t_stack *a, t_stack *b);
+
+size_t			ft_puts(const char *str);
+size_t			ft_strlen(const char *str);
+
+void			solve_small(t_stack **a, t_stack **b);
+void			solve(t_stack **a);
 
 #endif
