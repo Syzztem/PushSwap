@@ -6,7 +6,7 @@
 /*   By: lothieve <lothieve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 11:01:24 by lothieve          #+#    #+#             */
-/*   Updated: 2021/12/02 17:03:46 by lothieve         ###   ########.fr       */
+/*   Updated: 2022/01/11 14:27:06 by lothieve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int
 		return (1);
 	if (stack->next)
 	{
-		if (stack->val > stack->next->val)
+		if (stack->val < stack->next->val)
 			return (is_sorted(stack->next));
 		return (0);
 	}
@@ -60,7 +60,7 @@ t_stack
 	*last(t_stack *stack)
 {
 	if (stack && stack->next)
-		return (before_last(stack->next));
+		return (last(stack->next));
 	return (stack);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lothieve <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 13:43:44 by lothieve          #+#    #+#             */
-/*   Updated: 2021/12/02 16:37:45 by lothieve         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:16:32 by lothieve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	ft_atoi(const char *str)
 	return ((int)out);
 }
 
-static void	check_doublons(int size, t_stack *stack)
+static void	check_doublons(int size, t_sstack *stack)
 {
 	int	i;
 	int	j;
@@ -58,10 +58,10 @@ static void	check_doublons(int size, t_stack *stack)
 	}
 }
 
-static t_stack	*get_stack(int size, char **list)
+static t_sstack	*get_stack(int size, char **list)
 {
-	t_stack	*stack;
-	int		i;
+	t_sstack	*stack;
+	int			i;
 
 	stack = malloc(sizeof(t_stack) * size);
 	i = 0;
@@ -80,14 +80,14 @@ static t_stack	*get_stack(int size, char **list)
 
 int	main(int ac, char **av)
 {
-	t_stack	*a;
-	t_stack *acpy;
+	t_sstack	*a;
+	t_stack		*acpy;
 
-	if (ac < 3)
+	if (ac < 2)
 		return (0);
 	a = get_stack(ac - 1, av + 1);
-	acpy = a;
-	solve(&a);
-	print_both_stacks(a, NULL);
-	free(acpy);
+	convert_stack(a);
+	acpy = (t_stack *)a;
+	solve(&acpy);
+	free(a);
 }

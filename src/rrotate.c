@@ -6,7 +6,7 @@
 /*   By: lothieve <lothieve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:46:41 by lothieve          #+#    #+#             */
-/*   Updated: 2021/12/02 14:32:33 by lothieve         ###   ########.fr       */
+/*   Updated: 2022/01/13 14:57:46 by lothieve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void
 	rrotate(t_stack **first, t_stack *last)
 {
-	if (last->next)
+	if (last->next->next)
 		return (rrotate(first, last->next));
-	last->next = *first;
-	*first = (*first)->next;
-	last->next->next = NULL;
+	last->next->next = *first;
+	*first = last->next;
+	last->next = NULL;
 }
 
 void	rra(t_stack **a, t_stack **b)

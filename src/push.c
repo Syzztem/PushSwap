@@ -6,34 +6,20 @@
 /*   By: lothieve <lothieve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:41:32 by lothieve          #+#    #+#             */
-/*   Updated: 2021/12/02 14:29:19 by lothieve         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:04:47 by lothieve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	t_stack	*pop_last(t_stack **stack)
+static void	push(t_stack **dest, t_stack **src)
 {
-	t_stack	*out;
-	t_stack	*bef_last;
+	t_stack	*save;
 
-	if (!(*stack)->next)
-	{
-		out = *stack;
-		*stack = NULL;
-		return (out);
-	}
-	bef_last = before_last(*stack);
-	out = bef_last->next;
-	bef_last->next = NULL;
-	return (out);
-}
-
-static void	push_back(t_stack **stack, t_stack *elem)
-{
-	if (*stack)
-		return (push_back(&(*stack)->next, elem));
-	*stack = elem;
+	save = *src;
+	*src = save->next;
+	save->next = *dest;
+	*dest = save;
 }
 
 void	pa(t_stack **a, t_stack **b)
@@ -41,11 +27,13 @@ void	pa(t_stack **a, t_stack **b)
 	ft_puts("pa");
 	if (!*b)
 		return ;
-	push_back(a, pop_last(b));
+	push(a, b);
 }
 
 void	pb(t_stack **a, t_stack **b)
 {
 	ft_puts("pb");
-	pa(b, a);
+	if (!*a)
+		return ;
+	push(b, a);
 }

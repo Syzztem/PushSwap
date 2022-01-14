@@ -6,7 +6,7 @@
 /*   By: lothieve <lothieve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:36:44 by lothieve          #+#    #+#             */
-/*   Updated: 2021/12/02 14:31:38 by lothieve         ###   ########.fr       */
+/*   Updated: 2022/01/13 14:12:45 by lothieve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static void
 
 	if (stack_size(stack) < 2)
 		return ;
-	if (stack->next->next)
-		return (swap(stack->next));
 	sw = stack->val;
 	stack->val = stack->next->val;
 	stack->next->val = sw;
